@@ -3,7 +3,7 @@
  * Plugin Name:       Masonry Image Gallery
  * Plugin URI:        https://example.com/
  * Description:       Responsive masonry image gallery with a color overlay and overlaid text, sourced from an ACF Options Page. Use the [masonry_gallery] shortcode to place it anywhere.
- * Version:           1.0.0
+ * Version:           1.0.1
  * Requires at least: 5.8
  * Requires PHP:      7.4
  * Author:            Your Venue
@@ -26,7 +26,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // No direct access.
 }
 
-define( 'MIG_VERSION', '1.0.0' );
+define( 'MIG_VERSION', '1.0.1' );
 define( 'MIG_PLUGIN_FILE', __FILE__ );
 define( 'MIG_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'MIG_PLUGIN_URL', plugin_dir_url( __FILE__ ) );

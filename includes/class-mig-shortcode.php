@@ -19,12 +19,10 @@ class MIG_Shortcode {
 	public static function render( $atts ) {
 		$atts = shortcode_atts(
 			array(
-				'columns_desktop'       => 4,
-				'columns_tablet'        => 2,
-				'columns_mobile'        => 1,
-				'gap'                   => 16,
-				'overlay_opacity'       => 0.5,
-				'overlay_opacity_hover' => 0.75,
+				'columns_desktop' => 3,
+				'columns_tablet'  => 2,
+				'columns_mobile'  => 1,
+				'gap'             => 16,
 			),
 			$atts,
 			'masonry_gallery'
@@ -47,13 +45,11 @@ class MIG_Shortcode {
 		$instance_id = 'mig-' . self::$instance_count . '-' . substr( md5( wp_rand() ), 0, 6 );
 
 		$style = sprintf(
-			'--mig-cols-desktop: %d; --mig-cols-tablet: %d; --mig-cols-mobile: %d; --mig-gap: %dpx; --mig-overlay-opacity: %s; --mig-overlay-opacity-hover: %s;',
+			'--mig-cols-desktop: %d; --mig-cols-tablet: %d; --mig-cols-mobile: %d; --mig-gap: %dpx;',
 			max( 1, (int) $atts['columns_desktop'] ),
 			max( 1, (int) $atts['columns_tablet'] ),
 			max( 1, (int) $atts['columns_mobile'] ),
-			max( 0, (int) $atts['gap'] ),
-			esc_attr( (float) $atts['overlay_opacity'] ),
-			esc_attr( (float) $atts['overlay_opacity_hover'] )
+			max( 0, (int) $atts['gap'] )
 		);
 
 		ob_start();
