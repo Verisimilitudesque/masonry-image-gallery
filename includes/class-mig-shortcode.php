@@ -1,7 +1,8 @@
 <?php
 /**
  * [masonry_gallery] shortcode: renders the gallery_images repeater from the
- * ACF Options Page as a responsive CSS-masonry grid.
+ * ACF Options Page as a responsive, uniform image grid (images are
+ * center-cropped to fill each cell via object-fit: cover).
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -23,6 +24,7 @@ class MIG_Shortcode {
 				'columns_tablet'  => 2,
 				'columns_mobile'  => 1,
 				'gap'             => 16,
+				'aspect_ratio'    => '1/1',
 			),
 			$atts,
 			'masonry_gallery'
@@ -44,12 +46,15 @@ class MIG_Shortcode {
 		self::$instance_count++;
 		$instance_id = 'mig-' . self::$instance_count . '-' . substr( md5( wp_rand() ), 0, 6 );
 
+		$aspect_ratio = preg_match( '/^[\d.]+\s*\/\s*[\d.]+$/', trim( $atts['aspect_ratio'] ) ) ? trim( $atts['aspect_ratio'] ) : '1/1';
+
 		$style = sprintf(
-			'--mig-cols-desktop: %d; --mig-cols-tablet: %d; --mig-cols-mobile: %d; --mig-gap: %dpx;',
+			'--mig-cols-desktop: %d; --mig-cols-tablet: %d; --mig-cols-mobile: %d; --mig-gap: %dpx; --mig-aspect-ratio: %s;',
 			max( 1, (int) $atts['columns_desktop'] ),
 			max( 1, (int) $atts['columns_tablet'] ),
 			max( 1, (int) $atts['columns_mobile'] ),
-			max( 0, (int) $atts['gap'] )
+			max( 0, (int) $atts['gap'] ),
+			esc_attr( $aspect_ratio )
 		);
 
 		ob_start();

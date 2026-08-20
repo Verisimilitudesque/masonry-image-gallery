@@ -1,26 +1,26 @@
 .mig-gallery {
-	column-count: var(--mig-cols-desktop, 3);
-	column-gap: var(--mig-gap, 16px);
+	display: grid;
+	grid-template-columns: repeat(var(--mig-cols-desktop, 3), 1fr);
+	gap: var(--mig-gap, 16px);
 	width: 100%;
 }
 
 @media (max-width: 900px) {
 	.mig-gallery {
-		column-count: var(--mig-cols-tablet, 2);
+		grid-template-columns: repeat(var(--mig-cols-tablet, 2), 1fr);
 	}
 }
 
 @media (max-width: 600px) {
 	.mig-gallery {
-		column-count: var(--mig-cols-mobile, 1);
+		grid-template-columns: repeat(var(--mig-cols-mobile, 1), 1fr);
 	}
 }
 
 .mig-item {
 	position: relative;
 	display: block;
-	break-inside: avoid;
-	margin-bottom: var(--mig-gap, 16px);
+	aspect-ratio: var(--mig-aspect-ratio, 1 / 1);
 	overflow: hidden;
 	border-radius: 8px;
 	color: inherit;
@@ -30,7 +30,8 @@
 .mig-item img {
 	display: block;
 	width: 100%;
-	height: auto;
+	height: 100%;
+	object-fit: cover;
 }
 
 .mig-overlay {
