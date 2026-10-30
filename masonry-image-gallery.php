@@ -6,7 +6,7 @@
  * Version:           1.0.3
  * Requires at least: 5.8
  * Requires PHP:      7.4
- * Author:            Your Venue
+ * Author:            Verisimilitudesque
  * Text Domain:       masonry-image-gallery
  * Domain Path:       /languages
  *
