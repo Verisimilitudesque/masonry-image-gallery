@@ -1,5 +1,5 @@
 === Masonry Image Gallery ===
-Contributors: yourname
+Contributors: Verisimilitudesque
 Tags: gallery, masonry, acf, images
 Requires at least: 5.8
 Tested up to: 6.6
